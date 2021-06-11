@@ -31,7 +31,7 @@ pipeline {
             sh './gradlew clean'
 
             echo "------------>Unit Tests<------------"
-            sh './gradlew  test'
+            sh './gradlew --build-cache test'
       }
     }
 

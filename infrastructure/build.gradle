@@ -24,8 +24,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility kotlin_version
-        targetCompatibility kotlin_version
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -33,6 +33,6 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':domain')
+    implementation project(':domain')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
