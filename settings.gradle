@@ -1,2 +1,4 @@
 rootProject.name = "adn_kotlin"
-include ':app'
+include ':presentation'
+include ':domain'
+include ':infrastructure'
