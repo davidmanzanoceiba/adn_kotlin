@@ -11,12 +11,12 @@ abstract class Vehicle(
     }
 
     private fun validateLicensePlate() {
-        if ("" == licensePlate){
+        if ("" == licensePlate) {
             //exception
         }
     }
 
     abstract fun saveVehicle()
 
-    abstract fun parkingCost() : Int
+    abstract fun parkingCost(): Int
 }
