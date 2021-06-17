@@ -1,5 +1,6 @@
 package com.ceiba.domain.vehicle.motorcycle.model
 
+import com.ceiba.domain.parking.service.ParkingService
 import com.ceiba.domain.vehicle.model.Vehicle
 import java.time.LocalDateTime
 
@@ -21,11 +22,13 @@ class Motorcycle(
         }
     }
 
-    override fun saveVehicle() {
-        TODO("Not yet implemented")
+    override fun saveVehicle(parkingService: ParkingService) {
+        parkingService.saveMotorcycle(this, entryDate.dayOfWeek.value)
     }
 
-    override fun parkingCost(): Int {
-        TODO("Not yet implemented")
+    override fun parkingCost(parkingService: ParkingService): Int {
+        val cost = parkingService.motorcycleParkingCost(this, LocalDateTime.now())
+        parkingService.deleteMotorcycle(this)
+        return cost
     }
 }
