@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 class Motorcycle(
     licensePlate: String,
     entryDate: LocalDateTime,
-    private val cylinderCapacity: String
+    val cylinderCapacity: String
 ) : Vehicle(licensePlate, entryDate) {
 
     init {
