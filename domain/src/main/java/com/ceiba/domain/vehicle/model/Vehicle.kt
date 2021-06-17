@@ -1,22 +1,22 @@
 package com.ceiba.domain.vehicle.model
 
+import com.ceiba.domain.parking.exception.GlobalException
+import com.ceiba.domain.parking.service.ParkingService
+import java.lang.Exception
 import java.time.LocalDateTime
 
-abstract class Vehicle(
-    protected val licensePlate: String,
-    protected val entryDate: LocalDateTime
-) {
+abstract class Vehicle(val licensePlate: String, val entryDate: LocalDateTime) {
     init {
         validateLicensePlate()
     }
 
     private fun validateLicensePlate() {
-        if ("" == licensePlate){
-            //exception
+        if ("" == licensePlate) {
+            throw GlobalException("Ingrese la placa del vehiculo", Exception())
         }
     }
 
-    abstract fun saveVehicle()
+    abstract fun saveVehicle(parkingService: ParkingService)
 
-    abstract fun parkingCost() : Int
+    abstract fun parkingCost(parkingService: ParkingService): Int
 }
