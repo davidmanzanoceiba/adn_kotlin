@@ -1,4 +1,3 @@
 package com.ceiba.domain.parking.model
 
-class ServiceCost {
-}
+data class ServiceCost(val priceHour: Int, val priceDay: Int, val surplus: Int)

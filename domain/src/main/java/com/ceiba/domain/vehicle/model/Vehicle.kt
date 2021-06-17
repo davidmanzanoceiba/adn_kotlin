@@ -2,10 +2,7 @@ package com.ceiba.domain.vehicle.model
 
 import java.time.LocalDateTime
 
-abstract class Vehicle(
-    protected val licensePlate: String,
-    protected val entryDate: LocalDateTime
-) {
+abstract class Vehicle(val licensePlate: String, val entryDate: LocalDateTime) {
     init {
         validateLicensePlate()
     }
