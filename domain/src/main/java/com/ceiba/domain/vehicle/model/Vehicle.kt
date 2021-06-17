@@ -1,6 +1,8 @@
 package com.ceiba.domain.vehicle.model
 
+import com.ceiba.domain.parking.exception.GlobalException
 import com.ceiba.domain.parking.service.ParkingService
+import java.lang.Exception
 import java.time.LocalDateTime
 
 abstract class Vehicle(val licensePlate: String, val entryDate: LocalDateTime) {
@@ -10,7 +12,7 @@ abstract class Vehicle(val licensePlate: String, val entryDate: LocalDateTime) {
 
     private fun validateLicensePlate() {
         if ("" == licensePlate) {
-            //exception
+            throw GlobalException("Ingrese la placa del vehiculo", Exception())
         }
     }
 

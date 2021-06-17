@@ -1,7 +1,9 @@
 package com.ceiba.domain.vehicle.motorcycle.model
 
+import com.ceiba.domain.parking.exception.GlobalException
 import com.ceiba.domain.parking.service.ParkingService
 import com.ceiba.domain.vehicle.model.Vehicle
+import java.lang.Exception
 import java.time.LocalDateTime
 
 class Motorcycle(
@@ -16,7 +18,7 @@ class Motorcycle(
 
     private fun validateCylinderCapacity() {
         if ("" == cylinderCapacity) {
-            //exception
+            throw GlobalException("Ingrese el cilindraje del vehiculo", Exception())
         } else {
             cylinderCapacity.toInt()
         }

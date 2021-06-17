@@ -1,5 +1,6 @@
 package com.ceiba.domain.parking.service
 
+import com.ceiba.domain.parking.exception.GlobalException
 import com.ceiba.domain.parking.model.Parking
 import com.ceiba.domain.parking.model.ServiceCost
 import com.ceiba.domain.vehicle.car.model.Car
@@ -7,8 +8,8 @@ import com.ceiba.domain.vehicle.car.repository.CarRepository
 import com.ceiba.domain.vehicle.model.Vehicle
 import com.ceiba.domain.vehicle.motorcycle.model.Motorcycle
 import com.ceiba.domain.vehicle.motorcycle.repository.MotorcycleRepository
+import java.lang.Exception
 import java.time.LocalDateTime
-import java.time.temporal.ChronoField
 import java.time.temporal.ChronoUnit
 import kotlin.math.ceil
 
@@ -25,10 +26,10 @@ class ParkingService(
         val numberOfCars = carRepository.getNumberOfCars()
         when {
             numberOfCars == Parking.MAX_NUMBER_OF_CARS -> {
-                //ParkingLimitException
+                throw GlobalException(Parking.PARKING_LIMIT, Exception())
             }
             validateLicensePlate(car.licensePlate, currentDay) -> {
-                //RestrictedAccessByDayException
+                throw GlobalException(Parking.RESTRICTED_LICENSE_PLATE, Exception())
             }
             else -> {
                 carRepository.saveCar(car)
@@ -40,10 +41,10 @@ class ParkingService(
         val numberOfCars = motorcycleRepository.getNumberOfMotorcycles()
         when {
             numberOfCars == Parking.MAX_NUMBER_OF_MOTORCYCLES -> {
-                //ParkingLimitException
+                throw GlobalException(Parking.PARKING_LIMIT, Exception())
             }
             validateLicensePlate(motorcycle.licensePlate, currentDay) -> {
-                //RestrictedAccessByDayException
+                throw GlobalException(Parking.RESTRICTED_LICENSE_PLATE , Exception())
             }
             else -> {
                 motorcycleRepository.saveMotorcycle(motorcycle)
@@ -111,5 +112,4 @@ class ParkingService(
         val timeElapsed: Long = entryDate.until(exitDate, ChronoUnit.MILLIS)
         return ceil((timeElapsed / MILLISECONDS_IN_AN_HOUR).toDouble()).toInt()
     }
-
 }
