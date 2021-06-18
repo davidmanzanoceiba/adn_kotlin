@@ -12,7 +12,6 @@ class Parking {
         const val MAX_NUMBER_OF_CARS = 20
         const val MAX_NUMBER_OF_MOTORCYCLES = 10
         const val PARKING_LIMIT = "Se ha alcanzado el limite de capacidad del parqueadero"
-        const val RESTRICTED_LICENSE_PLATE =
-            "La placa del vehiculo esta restringida por el dia de hoy"
+        const val RESTRICTED_LICENSE_PLATE = "La placa del vehiculo esta restringida por hoy"
     }
 }
