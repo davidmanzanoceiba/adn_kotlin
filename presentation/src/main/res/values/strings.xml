@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">adn_kotlin</string>
+    <string name="welcome">Parking Service</string>
+    <string name="licensePlate">Placa del vehiculo</string>
+    <string name="cylinderCapacity">Cilindraje</string>
+    <string name="motorcycleName">Moto</string>
+    <string name="carName">Carro</string>
+    <string name="buttonSave">Guardar</string>
+    <string name="buttonCollect">Cobrar</string>
+    <string name="licensePlateFormat">HUC-956</string>
+    <string name="entryDate">Fecha de ingreso:</string>
+    <string name="dateFormat">2021–05–25T21:16:00.703</string>
+    <string name="vehicleSaved">Vehiculo guardado con éxito!</string>
+    <string name="vehicleNotSavedException">Error al guardar vehiculo: </string>
 </resources>
