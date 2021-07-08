@@ -3,6 +3,7 @@
     package="com.ceiba.adn_kotlin">
 
     <application
+        android:name="com.ceiba.adn_kotlin.ParkingApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
