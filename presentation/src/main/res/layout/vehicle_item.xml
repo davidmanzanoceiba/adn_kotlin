@@ -8,11 +8,10 @@
     android:elevation="10dp"
     app:cardCornerRadius="10dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="18dp"
-        android:orientation="vertical">
+        android:layout_margin="18dp">
 
         <TextView
             android:id="@+id/textViewLicensePlate"
@@ -20,31 +19,39 @@
             android:layout_height="wrap_content"
             android:text="@string/licensePlateFormat"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textViewTitleEntryDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="@string/entryDate"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLicensePlate" />
 
         <TextView
             android:id="@+id/textViewEntryDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="@string/dateFormat"
             android:textSize="18sp"
-            android:textStyle="italic" />
+            android:layout_marginTop="10dp"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitleEntryDate" />
 
         <Button
             android:id="@+id/buttonCollect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:text="@string/buttonCollect"
             android:layout_marginTop="10dp"
-            android:text="@string/buttonCollect" />
-    </LinearLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEntryDate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
