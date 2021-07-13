@@ -10,12 +10,12 @@ import com.ceiba.infrastructure.motorcycle.translate.MotorcycleTranslate
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class MotorcycleRepositoryRoom: MotorcycleRepository {
+class MotorcycleRepositoryRoom @Inject constructor(@ApplicationContext context: Context) :
+    MotorcycleRepository {
 
     private var parkingDatabase: ParkingDatabase = TODO()
 
-    @Inject
-    fun MotorcycleRepositoryRoom(@ApplicationContext context: Context) {
+    init {
         parkingDatabase = ParkingDatabase.getInstance(context)
     }
 
@@ -42,8 +42,13 @@ class MotorcycleRepositoryRoom: MotorcycleRepository {
     override fun getMotorcycles(): List<Motorcycle> {
         val motorcycleList: MutableList<Motorcycle> = ArrayList()
         try {
-            val motorcycleEntityList: List<MotorcycleEntity> = parkingDatabase.motorcycleDao().getMotorcycles()
-            motorcycleList.addAll(MotorcycleTranslate.translateMotorcycleListFromDBToDomain(motorcycleEntityList))
+            val motorcycleEntityList: List<MotorcycleEntity> =
+                parkingDatabase.motorcycleDao().getMotorcycles()
+            motorcycleList.addAll(
+                MotorcycleTranslate.translateMotorcycleListFromDBToDomain(
+                    motorcycleEntityList
+                )
+            )
         } catch (e: Exception) {
             throw GlobalException("Error al obtener la lista de motos", e)
         }

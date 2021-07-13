@@ -12,12 +12,11 @@ import java.lang.Exception
 import javax.inject.Inject
 
 
-class CarRepositoryRoom: CarRepository {
+class CarRepositoryRoom @Inject constructor(@ApplicationContext context: Context) : CarRepository {
 
     private var parkingDatabase: ParkingDatabase = TODO()
 
-    @Inject
-    fun CarRepositoryRoom(@ApplicationContext context: Context) {
+    init {
         parkingDatabase = ParkingDatabase.getInstance(context)
     }
 

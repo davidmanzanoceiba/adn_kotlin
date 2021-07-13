@@ -11,15 +11,22 @@ import com.ceiba.domain.vehicle.motorcycle.repository.MotorcycleRepository
 import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
+import javax.inject.Inject
 import kotlin.math.ceil
 
-class ParkingService(
-    private val carRepository: CarRepository,
-    private val motorcycleRepository: MotorcycleRepository
-) {
+class ParkingService {
+
+    private var carRepository: CarRepository = TODO()
+    private var motorcycleRepository: MotorcycleRepository = TODO()
     companion object {
         private const val MILLISECONDS_IN_AN_HOUR = 3600000
         private const val HOURS_IN_A_DAY = 24
+    }
+
+    @Inject
+    fun ParkingService(carRepository: CarRepository, motorcycleRepository: MotorcycleRepository) {
+        this.carRepository = carRepository
+        this.motorcycleRepository = motorcycleRepository
     }
 
     fun saveCar(car: Car, currentDay: Int) {
