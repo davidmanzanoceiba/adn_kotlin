@@ -1,7 +1,6 @@
 package com.ceiba.adn_kotlin.viewmodel
 
 import android.content.Context
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,12 +8,15 @@ import com.ceiba.adn_kotlin.R
 import com.ceiba.domain.parking.exception.GlobalException
 import com.ceiba.domain.parking.service.ParkingService
 import com.ceiba.domain.vehicle.model.Vehicle
+import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.lang.Exception
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import javax.inject.Inject
 
-class ParkingViewModel @ViewModelInject constructor(
+@HiltViewModel
+class ParkingViewModel @Inject constructor(
     private val parkingService: ParkingService,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
@@ -23,10 +25,6 @@ class ParkingViewModel @ViewModelInject constructor(
     private val saveVehicleResponse: MutableLiveData<String> = MutableLiveData()
     private val parkingCost: MutableLiveData<Int> = MutableLiveData()
     private val executorService: ExecutorService = Executors.newFixedThreadPool(4)
-
-    init {
-        getVehicleMutableList()
-    }
 
     fun saveVehicle(vehicle: Vehicle): LiveData<String> {
         try {
