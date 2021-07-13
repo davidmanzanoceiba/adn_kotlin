@@ -1,9 +1,11 @@
 package com.ceiba.infrastructure.car.database.dao
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.ceiba.infrastructure.car.database.entity.CarEntity
 
+@Dao
 interface CarDao {
 
     @Insert

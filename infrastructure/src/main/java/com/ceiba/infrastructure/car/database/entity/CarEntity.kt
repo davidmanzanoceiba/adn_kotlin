@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 class CarEntity {
 
     @PrimaryKey(autoGenerate = true)
-    private var id = 0
+    var id = 0
     var licensePlate = ""
     var entryDate = ""
 }

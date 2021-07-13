@@ -13,11 +13,7 @@ import javax.inject.Inject
 class MotorcycleRepositoryRoom @Inject constructor(@ApplicationContext context: Context) :
     MotorcycleRepository {
 
-    private var parkingDatabase: ParkingDatabase = TODO()
-
-    init {
-        parkingDatabase = ParkingDatabase.getInstance(context)
-    }
+    private var parkingDatabase = ParkingDatabase.getInstance(context)
 
     override fun saveMotorcycle(motorcycle: Motorcycle) {
         val motorcycleEntity = MotorcycleTranslate.translateMotorcycleFromDomainToDB(motorcycle)

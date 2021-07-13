@@ -14,19 +14,14 @@ import java.time.temporal.ChronoUnit
 import javax.inject.Inject
 import kotlin.math.ceil
 
-class ParkingService {
+class ParkingService @Inject constructor(
+    private val carRepository: CarRepository,
+    private val motorcycleRepository: MotorcycleRepository
+) {
 
-    private var carRepository: CarRepository = TODO()
-    private var motorcycleRepository: MotorcycleRepository = TODO()
     companion object {
         private const val MILLISECONDS_IN_AN_HOUR = 3600000
         private const val HOURS_IN_A_DAY = 24
-    }
-
-    @Inject
-    fun ParkingService(carRepository: CarRepository, motorcycleRepository: MotorcycleRepository) {
-        this.carRepository = carRepository
-        this.motorcycleRepository = motorcycleRepository
     }
 
     fun saveCar(car: Car, currentDay: Int) {
@@ -51,7 +46,7 @@ class ParkingService {
                 throw GlobalException(Parking.PARKING_LIMIT, Exception())
             }
             validateLicensePlate(motorcycle.licensePlate, currentDay) -> {
-                throw GlobalException(Parking.RESTRICTED_LICENSE_PLATE , Exception())
+                throw GlobalException(Parking.RESTRICTED_LICENSE_PLATE, Exception())
             }
             else -> {
                 motorcycleRepository.saveMotorcycle(motorcycle)

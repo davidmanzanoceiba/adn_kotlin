@@ -19,10 +19,15 @@ abstract class ParkingDatabase : RoomDatabase() {
     companion object {
         private var databaseInstance: ParkingDatabase? = null
 
+        @Synchronized
         fun getInstance(context: Context): ParkingDatabase {
             if (databaseInstance == null) {
                 databaseInstance = Room
-                    .databaseBuilder(context, ParkingDatabase::class.java, "parking_database")
+                    .databaseBuilder(
+                        context.applicationContext,
+                        ParkingDatabase::class.java,
+                        "parking_database"
+                    )
                     .build()
             }
             return databaseInstance!!

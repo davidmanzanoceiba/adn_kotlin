@@ -11,14 +11,10 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import java.lang.Exception
 import javax.inject.Inject
 
+class CarRepositoryRoom @Inject constructor(@ApplicationContext val context: Context) :
+    CarRepository {
 
-class CarRepositoryRoom @Inject constructor(@ApplicationContext context: Context) : CarRepository {
-
-    private var parkingDatabase: ParkingDatabase = TODO()
-
-    init {
-        parkingDatabase = ParkingDatabase.getInstance(context)
-    }
+    private val parkingDatabase = ParkingDatabase.getInstance(context)
 
     override fun saveCar(car: Car) {
         val carEntity = CarTranslate.translateCarFromDomainToDB(car)
@@ -50,5 +46,4 @@ class CarRepositoryRoom @Inject constructor(@ApplicationContext context: Context
         }
         return carList
     }
-
 }
