@@ -19,10 +19,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_marginTop="20dp"
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewWelcome">
@@ -99,9 +99,9 @@
                         android:id="@+id/buttonSaveVehicle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+                        android:text="@string/buttonSave"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:text="@string/buttonSave" />
+                        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -109,12 +109,12 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewVehicles"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewSetVehicle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewSetVehicle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
